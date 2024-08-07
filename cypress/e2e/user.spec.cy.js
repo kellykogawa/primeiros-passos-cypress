@@ -11,7 +11,7 @@ const myinfoPage = new MyInfoPage()
 
 describe('Orange HRM Tests', () => {
 
-  it.only('User Info Update - Success', () => {
+  it('User Info Update - Success', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(userData.userSucess.username, userData.userSucess.password)
 
@@ -27,11 +27,18 @@ describe('Orange HRM Tests', () => {
 
 
   it('Login - Fail', () => {
-    cy.visit('/auth/login')
+    loginPage.accessLoginPage()
+    loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
+    loginPage.checkAccessInvalid()
+  
+
+
+
+    /* cy.visit('/auth/login')
     cy.get(selectorsList.usernameField).type(userData.userFail.username)
     cy.get(selectorsList.passwordField).type(userData.userFail.password)
     cy.get(selectorsList.loginButton).click()
-    cy.get(selectorsList.wrongCredentialAlert)
+    cy.get(selectorsList.wrongCredentialAlert) */
   
   })
 })
