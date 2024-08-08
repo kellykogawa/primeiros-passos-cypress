@@ -6,9 +6,11 @@ class MyInfoPage  {
             middleNameField: "[name='middleName']",
             lastNameField: "[name='lastName']",
             genericField: ".oxd-input--active",
+            dateField: ".oxd-date-input",
             genericCombobox: ".oxd-select-text--arrow",
             secondItemCombobox: ".oxd-select-dropdown > :nth-child(27)",
             thirdItemCombobox: ".oxd-select-dropdown > :nth-child(2)",
+            genderOptionButton: ".--label-right",
             dateField: "[placeholder='yyyy-dd-mm']",
             dateCloseButton: ".--close",
             submitButton: ".orangehrm-left-space"
@@ -27,7 +29,7 @@ class MyInfoPage  {
         cy.get(this.selectorsList().genericField).eq(3).clear().type(employeeId)
         cy.get(this.selectorsList().genericField).eq(4).clear().type(otherId)
         cy.get(this.selectorsList().genericField).eq(5).clear().type(driversLicense)
-        cy.get(this.selectorsList().genericField).eq(6).clear().type(expiryDate)
+        cy.get(this.selectorsList().dateField).eq(0).clear().type(expiryDate)
         cy.get(this.selectorsList().dateCloseButton).click()
     }
         
@@ -37,12 +39,14 @@ class MyInfoPage  {
         cy.get('.oxd-toast-close')
     }
 
-    fillStatus() {
+    fillStatus(birthDate) {
         cy.get(this.selectorsList().genericCombobox).eq(0).click({ force: true })
         cy.get(this.selectorsList().secondItemCombobox).click()
         cy.get(this.selectorsList().genericCombobox).eq(1).click({ force: true })
         cy.get(this.selectorsList().thirdItemCombobox).click()
-        cy.get(this.selectorsList().submitButton).eq(0).click({ force: true })
+        cy.get(this.selectorsList().dateField).eq(1).clear().type(birthDate)
+        cy.get(this.selectorsList().dateCloseButton).click()
+        cy.get(this.selectorsList().genderOptionButton).eq(1).click()
     }
 }
 

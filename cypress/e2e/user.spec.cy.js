@@ -3,11 +3,13 @@ import LoginPage from '../pages/loginPage'
 import DashboardPage from '../pages/dashboardPage'
 import MenuPage from '../pages/menuPage'
 import MyInfoPage from '../pages/myInfoPage'
+import BuzzPage from '../pages/buzzPage'
 
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const menuPage = new MenuPage()
 const myinfoPage = new MyInfoPage()
+const buzzPage = new BuzzPage()
 
 describe('Orange HRM Tests', () => {
 
@@ -20,8 +22,12 @@ describe('Orange HRM Tests', () => {
     menuPage.accessMyInfo()
 
     myinfoPage.fillPersonalDetails('First Name', 'Middle Name', 'Last Name')
-    myinfoPage.fillEmployeeDetails('1234', '6789', '54321', '2025-10-26')
-    myinfoPage.fillStatus()
+    myinfoPage.fillEmployeeDetails('000000', '6789', '54321', '2025-08-22')
+    myinfoPage.fillStatus('2000-05-01')
     myinfoPage.saveForm()
+
+    menuPage.accessBuzz()
+    
+    buzzPage.postNews('Hii')
   })
 })
