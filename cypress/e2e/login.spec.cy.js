@@ -16,7 +16,7 @@ describe('Login Orange HRM Tests', () => {
 
     it('Login - Success', () => {
       loginPage.accessLoginPage()
-      loginPage.loginWithAnyUser(userData.userSucess.username, userData.userSucess.password)
+      loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
       dashboardPage.checkDashboardPage()
   })
 
